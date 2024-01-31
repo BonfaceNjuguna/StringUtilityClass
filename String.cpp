@@ -115,12 +115,20 @@ const char& String::operator[](size_t _index) const
 
 }
 
+bool String::operator<(const String& _other) const
+{
+
+}
+
 String String::operator+(const String& _other) const
 {
-	
+	String result = *this;
+	result.Append(_other);
+	return result;
 }
 
 String& String::operator+=(const String& _other)
 {
-
+	Append(_other);
+	return *this;
 }
