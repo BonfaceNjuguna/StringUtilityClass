@@ -114,3 +114,13 @@ const char& String::operator[](size_t _index) const
 {
 
 }
+
+String String::operator+(const String& _other) const
+{
+	
+}
+
+String& String::operator+=(const String& _other)
+{
+
+}

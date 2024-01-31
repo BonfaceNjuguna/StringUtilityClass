@@ -44,6 +44,9 @@ public:
 	char& operator[](size_t _index);
 	const char& operator[](size_t _index) const;
 
+	String operator+(const String& _other) const;
+	String& operator+=(const String& _other);
+
 private:
 /*
 * Put your internal data structures and members here
