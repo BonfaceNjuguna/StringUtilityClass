@@ -44,15 +44,15 @@ char& String::CharacterAt(size_t _index)
 	return data_[_index];
 }
 
-//const char& String::CharacterAt(size_t _index) const
-//{
-//
-//}
-//
-//bool String::EqualTo(const String& _other) const 
-//{
-//
-//}
+const char& String::CharacterAt(size_t _index) const
+{
+	return data_[_index];
+}
+
+bool String::EqualTo(const String& _other) const 
+{
+	return strcmp(data_, _other.CStr()) == 0;
+}
 
 //append
 String& String::Append(const String& _str)
