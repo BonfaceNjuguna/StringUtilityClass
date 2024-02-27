@@ -49,10 +49,9 @@ public:
 	String& operator+=(const String& _other);
 
 private:
-		char* data_;
-/*
-* Put your internal data structures and members here
-*/
+		char* m_str;
+		size_t m_length;
+		size_t m_capacity;
 };
 
 #endif
