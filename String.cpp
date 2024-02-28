@@ -165,8 +165,8 @@ String& String::operator=(const String& _str)
 	if (this != &_str)
 	{
 		delete[] m_str;
-		m_str = new char[_str.Length() + 1];
-		strcpy_s(m_str, _str.Length() + 1, _str.CStr());
+		m_str = new char[_str.m_length + 1];
+		strcpy_s(m_str, _str.m_length + 1, _str.CStr());
 	}
 	return *this;
 }
