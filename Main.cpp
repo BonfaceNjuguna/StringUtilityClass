@@ -4,6 +4,8 @@
 int main() {
     String helloStr("Hello, ");
     String worldStr("World");
+    String turkanaStr("Hello Turkana");
+    String myString("This is a test string to be used for search and replace");
 
     //concatenation
     String combineString = helloStr + worldStr;
@@ -29,23 +31,40 @@ int main() {
     std::cout << "The lower case of the combined string is: " << combineString.ToLower().CStr() << std::endl;
 
     //prepend
-    std::cout << "Prepending 'Mr. ' is: " << combineString.Prepend("Mr. ").CStr() << std::endl;
+    std::cout << "Prepending 'Mr. ' is: " << helloStr.Prepend("Mr. ").CStr() << std::endl;
 
     //append
-    std::cout << "Appending ' Bonface' is: " << combineString.Append(" Bonface").CStr() << std::endl;
+    std::cout << "Appending ' Bonface' is: " << helloStr.Append(" Bonface").CStr() << std::endl;
 
     //read from console
-    std::cout << "Enter a string: ";
-    combineString.ReadFromConsole();
-    std::cout << "The string entered is: " << combineString.CStr() << std::endl;
+    std::cout << "Enter a string to find: " << std::endl;
+    String inputStr;
+    inputStr.ReadFromConsole();
+
+    std::cout << "Searching for " << inputStr.CStr() << " ..." << std::endl;
+
+    if (myString.Find(inputStr) != String::npos)
+    {
+        std::cout << "Enter a string for replacement: " << std::endl;
+        String replaceStr;
+        replaceStr.ReadFromConsole();
+
+        std::cout << "Replacing " << inputStr.CStr() << " with " << replaceStr.CStr() << " ..." << std::endl;
+        myString.Replace(inputStr, replaceStr);
+        std::cout << "The string after replacing is: " << myString.CStr() << std::endl;
+    }
+    else 
+    {
+        std::cout << "The string was not found" << std::endl;
+    }
 
     //write to console
     std::cout << "The first string is: ";
-    helloStr.WriteToConsole();
+    worldStr.WriteToConsole();
     std::cout << std::endl;
 
-    //find
-    std::cout << "The index of 'Bonface' in the combined string is: " << combineString.Find("Bonface") << std::endl;
+    //find and replace
+    std::cout << "The string after replacing 'Turkana' with 'Kenya' is: " << turkanaStr.Replace("Turkana", "Kenya").CStr() << std::endl;
 
     return 0;
 }

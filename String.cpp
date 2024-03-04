@@ -123,16 +123,33 @@ String& String::ToUpper()
 
 size_t String::Find(const String& _str)
 {
-	return Find(0, _str);
+	std::string str1(m_str);
+	std::string str2(_str.CStr());
+	size_t found = str1.find(str2);
+	return found;
 }
 
 size_t String::Find(size_t _startIndex, const String& _replace)
 {
-	return 0;
+	std::string str1(m_str);
+	std::string str2(_replace.CStr());
+	size_t found = str1.find(str2, _startIndex);
+	return found;
 }
 
 String& String::Replace(const String& _find, const String& _replace)
 {
+	std::string str1(m_str);
+	std::string str2(_find.CStr());
+	std::string str3(_replace.CStr());
+
+	size_t found = str1.find(str2);
+	if (found != std::string::npos)
+	{
+		str1.replace(found, str2.length(), str3);
+		found = str1.find(str2, found + str3.length());
+	}
+	*this = str1.c_str();
 	return *this;
 }
 
