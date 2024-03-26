@@ -35,8 +35,6 @@ public:
 	String& ReadFromConsole();
 	String& WriteToConsole();
 
-	static const size_t npos = -1;
-
 public:
 	bool operator==(const String& _other);
 	bool operator!=(const String& _other);

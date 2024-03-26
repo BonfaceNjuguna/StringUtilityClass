@@ -5,7 +5,7 @@ int main() {
     String helloStr("Hello, ");
     String worldStr("World");
     String turkanaStr("Hello Turkana");
-    String myString("This is a test string to be used for search and replace");
+    String findAndReplaceString("This is a test string to be used for search and replace");
 
     //concatenation
     String combineString = helloStr + worldStr;
@@ -36,26 +36,12 @@ int main() {
     //append
     std::cout << "Appending ' Bonface' is: " << helloStr.Append(" Bonface").CStr() << std::endl;
 
-    //read from console
-    std::cout << "Enter a string to find: " << std::endl;
-    String inputStr;
-    inputStr.ReadFromConsole();
-
-    std::cout << "Searching for " << inputStr.CStr() << " ..." << std::endl;
-
-    if (myString.Find(inputStr) != String::npos)
-    {
-        std::cout << "Enter a string for replacement: " << std::endl;
-        String replaceStr;
-        replaceStr.ReadFromConsole();
-
-        std::cout << "Replacing " << inputStr.CStr() << " with " << replaceStr.CStr() << " ..." << std::endl;
-        myString.Replace(inputStr, replaceStr);
-        std::cout << "The string after replacing is: " << myString.CStr() << std::endl;
+    size_t foundIndex = findAndReplaceString.Find("inputStr");
+    if (foundIndex != SIZE_MAX) {
+        std::cout << "Substring found at index: " << foundIndex << std::endl;
     }
-    else 
-    {
-        std::cout << "The string was not found" << std::endl;
+    else {
+        std::cout << "Substring not found." << std::endl;
     }
 
     //write to console
@@ -63,8 +49,9 @@ int main() {
     worldStr.WriteToConsole();
     std::cout << std::endl;
 
-    //find and replace
-    std::cout << "The string after replacing 'Turkana' with 'Kenya' is: " << turkanaStr.Replace("Turkana", "Kenya").CStr() << std::endl;
+    //replace
+    turkanaStr.Replace("Turkana", "Kenya");
+    std::cout << "The string after replacing 'Turkana' with 'Kenya' is: " << turkanaStr.CStr() << std::endl;
 
     return 0;
 }

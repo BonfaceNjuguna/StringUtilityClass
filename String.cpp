@@ -1,6 +1,7 @@
 #include <iostream>
 #include "String.h"
 #include <cstring>
+#include <cstddef>
 
 //default constructor
 String::String() : m_str(nullptr), m_length(0), m_capacity(0){}
@@ -123,33 +124,71 @@ String& String::ToUpper()
 
 size_t String::Find(const String& _str)
 {
-	std::string str1(m_str);
-	std::string str2(_str.CStr());
-	size_t found = str1.find(str2);
-	return found;
+	return Find(0, _str);
 }
 
-size_t String::Find(size_t _startIndex, const String& _replace)
+size_t String::Find(size_t _startIndex, const String& _str)
 {
-	std::string str1(m_str);
-	std::string str2(_replace.CStr());
-	size_t found = str1.find(str2, _startIndex);
-	return found;
+	size_t findLength = _str.m_length;
+	size_t index = _startIndex;
+	while (index < m_length - findLength + 1)
+	{
+		size_t i = 0;
+		while (i < findLength && m_str[index + i] == _str.m_str[i])
+		{
+			++i;
+		}
+		if (i == findLength)
+		{
+			return index;
+		}
+		++index;
+	}
+	return SIZE_MAX;
 }
 
 String& String::Replace(const String& _find, const String& _replace)
 {
-	std::string str1(m_str);
-	std::string str2(_find.CStr());
-	std::string str3(_replace.CStr());
-
-	size_t found = str1.find(str2);
-	if (found != std::string::npos)
+	size_t findLength = _find.m_length;
+	size_t replaceLength = _replace.m_length;
+	size_t index = Find(_find);
+	while (index != SIZE_MAX)
 	{
-		str1.replace(found, str2.length(), str3);
-		found = str1.find(str2, found + str3.length());
+		if (findLength != replaceLength)
+		{
+			if (findLength > replaceLength)
+			{
+				size_t newLength = m_length - findLength + replaceLength;
+				size_t newCapacity = newLength + 1;
+				char* temp = new char[newCapacity];
+				strncpy_s(temp, newCapacity, m_str, index);
+				strcat_s(temp, newCapacity, _replace.CStr());
+				strcat_s(temp, newCapacity, m_str + index + findLength);
+				delete[] m_str;
+				m_str = temp;
+				m_length = newLength;
+				m_capacity = newCapacity;
+			}
+			else
+			{
+				size_t newLength = m_length - findLength + replaceLength;
+				size_t newCapacity = newLength + 1;
+				char* temp = new char[newCapacity];
+				strncpy_s(temp, newCapacity, m_str, index);
+				strcat_s(temp, newCapacity, _replace.CStr());
+				strcat_s(temp, newCapacity, m_str + index + findLength);
+				delete[] m_str;
+				m_str = temp;
+				m_length = newLength;
+				m_capacity = newCapacity;
+			}
+		}
+		else
+		{
+			strncpy_s(m_str + index, m_length - index, _replace.CStr(), replaceLength);
+		}
+		index = Find(index + replaceLength, _find);
 	}
-	*this = str1.c_str();
 	return *this;
 }
 
