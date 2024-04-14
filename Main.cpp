@@ -61,8 +61,9 @@ int main() {
     std::cout << std::endl;
 
     //replace
+    turkanaStr.WriteToConsole();
     turkanaStr.Replace("Turkana", "Kenya");
-    std::cout << "The string after replacing 'Turkana' with 'Kenya' is: " << turkanaStr.CStr() << std::endl;
+    std::cout << "\nThe string after replacing 'Turkana' with 'Kenya' is: " << turkanaStr.CStr() << std::endl;
 
     //copy
     String copiedString = helloStr;
