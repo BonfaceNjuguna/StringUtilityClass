@@ -230,11 +230,21 @@
 	{
 		if (this != &_str)
 		{
-			delete[] m_str;
-			m_str = new char[_str.m_length + 1];
-			strcpy_s(m_str, _str.m_length + 1, _str.CStr());
+			if (this != &_str)
+			{
+				// update capacity if necessary
+				if (m_capacity < _str.m_length + 1) {
+					delete[] m_str;
+					m_capacity = _str.m_length + 1;
+					m_str = new char[m_capacity];
+				}
+
+				// copy the string and update length
+				m_length = _str.m_length;
+				strcpy_s(m_str, m_capacity, _str.CStr());
+			}
+			return *this;
 		}
-		return *this;
 	}
 
 	//operator overload subscript

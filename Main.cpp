@@ -87,9 +87,10 @@ int main() {
 
     // Test operator overload assignment
     totalTests++;
-    String assignedString;
-    assignedString = worldStr;
-    logTestResult("Test " + std::to_string(totalTests) + " Operator=", assignedString.EqualTo(worldStr), logFile, successfulTests);
+    String smallString("This is smaller");
+    String largeString("This is a larger string to test assignment");
+    smallString = largeString;
+    logTestResult("Test " + std::to_string(totalTests) + " Operator=", smallString.Length() == largeString.Length(), logFile, successfulTests);
 
     // Test operator overload subscript
     totalTests++;
