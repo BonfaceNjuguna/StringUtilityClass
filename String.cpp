@@ -15,7 +15,7 @@
 		strcpy_s(m_str, m_capacity, _str);
 	}
 
-	//copy constructor
+	//copy constructor deep coopy
 	String::String(const String& _other)
 	{
 		m_length = _other.m_length;
@@ -57,15 +57,19 @@
 	//append
 	String& String::Append(const String& _str)
 	{
+		//calculate new length and capacity
 		size_t newLength = m_length + _str.m_length;
 		size_t newCapacity = newLength + 1;
 
 		char* temp = new char[newCapacity];
+
+		//copy and append characters from m_str
 		strcpy_s(temp, newCapacity, m_str);
 		strcat_s(temp, newCapacity, _str.CStr());
 
 		delete[] m_str;
 
+		//update member variables
 		m_str = temp;
 		m_length = newLength;
 		m_capacity = newCapacity;
@@ -76,15 +80,19 @@
 	//prepend
 	String& String::Prepend(const String& _str)
 	{
+		//calculate new length and capacity
 		size_t newLength = m_length + _str.m_length;
 		size_t newCapacity = newLength + 1;
 
 		char* temp = new char[newCapacity];
+
+		//copy and append characters from m_str
 		strcpy_s(temp, newCapacity, _str.CStr());
 		strcat_s(temp, newCapacity, m_str);
 
 		delete[] m_str;
 
+		//update member variables
 		m_str = temp;
 		m_length = newLength;
 		m_capacity = newCapacity;
@@ -105,7 +113,7 @@
 		{
 			if (m_str[i] >= 'A' && m_str[i] <= 'Z')
 			{
-				m_str[i] += 32;
+				m_str[i] += 32; //convert to lowercase
 			}
 		}
 		return *this;
@@ -118,7 +126,7 @@
 		{
 			if (m_str[i] >= 'a' && m_str[i] <= 'z')
 			{
-				m_str[i] -= 32;
+				m_str[i] -= 32;//convert to uppercase
 			}
 		}
 		return *this;
@@ -133,15 +141,20 @@
 	//find from index
 	size_t String::Find(size_t _startIndex, const String& _str)
 	{
+		//calculate lenght and startIndex of the substring
 		size_t findLength = _str.m_length;
 		size_t index = _startIndex;
+
 		while (index < m_length - findLength + 1)
 		{
 			size_t i = 0;
+
+			//compare characters of the substring
 			while (i < findLength && m_str[index + i] == _str.m_str[i])
 			{
 				++i;
 			}
+			//check if matching
 			if (i == findLength)
 			{
 				return index;
@@ -195,6 +208,8 @@
 	{
 		char buffer[256];
 		std::cin.getline(buffer, 256);
+
+		//assign input str to the object
 		*this = buffer;
 		return *this;
 	}
@@ -225,7 +240,7 @@
 		{
 			if (this != &_str)
 			{
-				//update capacity if necessary
+				//update capacity
 				if (m_capacity < _str.m_length + 1) {
 					delete[] m_str;
 					m_capacity = _str.m_length + 1;
