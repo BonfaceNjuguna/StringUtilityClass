@@ -1,126 +1,58 @@
-#include "String.h"
+#include "string.h"
 #include <iostream>
-#include <fstream>
-#include <ctime>
-#include <iomanip>
-#include <string>
-
-//log test results to a file
-static void logTestResult(const std::string& testName, bool passed, std::ofstream& logFile, int& successfulTests) {
-    logFile << testName << " " << (passed ? "Successful" : "Failed") << std::endl;
-    if (passed) successfulTests++;
-}
+#include "String.h"
 
 int main() {
-    std::ofstream logFile("log.txt", std::ios::app);
-
-    std::time_t t = std::time(nullptr);
-    std::tm tm;
-    localtime_s(&tm, &t);
-    char buffer[26];
-    asctime_s(buffer, sizeof buffer, &tm);
-
-    logFile << "\nDate: " << std::put_time(&tm, "%d/%m/%Y") << " Time: " << std::put_time(&tm, "%H:%M:%S") << std::endl;
-
     String helloStr("Hello, ");
     String worldStr("World");
     String turkanaStr("Hello Turkana");
-    String findAndReplaceString("This is a test string to be used for search and replace");
+    String findAndReplaceString("Find the string");
 
-    int totalTests = 0;
-    int successfulTests = 0;
-
-    // Test concatenation
-    totalTests++;
+    //concatenation
     String combineString = helloStr + worldStr;
-    logTestResult("Test " + std::to_string(totalTests) + " Concatenation", combineString.EqualTo("Hello, World"), logFile, successfulTests);
 
-    // Test length of the combined string
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Length", combineString.Length() == 12, logFile, successfulTests);
+    //output of the combined string
+    std::cout << "The combined string is: " << combineString.CStr() << std::endl;
 
-    // Test character at index
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " CharacterAt", combineString.CharacterAt(0) == 'H', logFile, successfulTests);
+    //length of the combined string
+    std::cout << "The length of the combined string is: " << combineString.Length() << std::endl;
 
-    // Test string equality
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " EqualTo", combineString.EqualTo("Hello, World"), logFile, successfulTests);
+    //character at index 5
+    std::cout << "The character at index 5 of the combined string is: " << combineString.CharacterAt(5) << std::endl;
 
-    // Test upper and lower case
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " ToUpper", combineString.ToUpper().EqualTo("HELLO, WORLD"), logFile, successfulTests);
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " ToLower", combineString.ToLower().EqualTo("hello, world"), logFile, successfulTests);
 
-    // Test prepend
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Prepend", helloStr.Prepend("Mr. ").EqualTo("Mr. Hello, "), logFile, successfulTests);
+    //check if combined string is equal to "Hello, World"
+    if (combineString.EqualTo("Hello, World"))
+        std::cout << "The combined string is equal to 'Hello, World'" << std::endl;
+    else
+        std::cout << "The combined string is not equal to 'Hello, World'" << std::endl;
 
-    // Test append
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Append", helloStr.Append(" Bonface").EqualTo("Mr. Hello,  Bonface"), logFile, successfulTests);
+    //convert to upper and lower case
+    std::cout << "The upper case of the combined string is: " << combineString.ToUpper().CStr() << std::endl;
+    std::cout << "The lower case of the combined string is: " << combineString.ToLower().CStr() << std::endl;
 
-    // Test find
-    totalTests++;
-    size_t foundIndex = findAndReplaceString.Find("search");
-    logTestResult("Test " + std::to_string(totalTests) + " Find", foundIndex != SIZE_MAX, logFile, successfulTests);
+    //prepend
+    std::cout << "Prepending 'Mr. ' is: " << helloStr.Prepend("Mr. ").CStr() << std::endl;
 
-    // Test find from index
-    totalTests++;
-    size_t findIndex = findAndReplaceString.Find(10, "string");
-    logTestResult("Test " + std::to_string(totalTests) + " FindFromIndex", findIndex != SIZE_MAX, logFile, successfulTests);
+    //append
+    std::cout << "Appending ' Bonface' is: " << helloStr.Append(" Bonface").CStr() << std::endl;
 
-    // Test replace
-    totalTests++;
-    turkanaStr.Replace("Hello", "Hi");
-    logTestResult("Test " + std::to_string(totalTests) + " Replace", turkanaStr.EqualTo("Hi Turkana"), logFile, successfulTests);
+    size_t foundIndex = findAndReplaceString.Find("i");
+    if (foundIndex != SIZE_MAX) {
+        std::cout << "The first substring found at index: " << foundIndex << std::endl;
+    }
+    else {
+        std::cout << "Substring not found." << std::endl;
+    }
 
-    // Test copy
-    totalTests++;
-    String copiedString = helloStr;
-    logTestResult("Test " + std::to_string(totalTests) + " Copy", copiedString.EqualTo(helloStr), logFile, successfulTests);
+    //write to console
+    std::cout << "The first string is: ";
+    worldStr.WriteToConsole();
+    std::cout << std::endl;
 
-    // Test operator overload equality
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Operator==", helloStr == helloStr, logFile, successfulTests);
-
-    // Test operator overload assignment
-    totalTests++;
-    String smallString("This is smaller");
-    String largeString("This is a larger string to test assignment");
-    smallString = largeString;
-    logTestResult("Test " + std::to_string(totalTests) + " Operator=", smallString.Length() == largeString.Length(), logFile, successfulTests);
-
-    // Test operator overload subscript
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Operator[]", helloStr[0] == 'M', logFile, successfulTests);
-
-    // Test operator overload inequality
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Operator!=", helloStr != worldStr, logFile, successfulTests);
-
-    // Test operator overload less than
-    totalTests++;
-    logTestResult("Test " + std::to_string(totalTests) + " Operator<", helloStr < worldStr, logFile, successfulTests);
-
-    // Test operator overload addition
-    totalTests++;
-    String addedString = helloStr + " Kabiru";
-    logTestResult("Test " + std::to_string(totalTests) + " Operator+", addedString.EqualTo("Mr. Hello,  Bonface Kabiru"), logFile, successfulTests);
-
-    // Test operator overload addition assignment
-    totalTests++;
-    helloStr += " Kabiru";
-    logTestResult("Test " + std::to_string(totalTests) + " Operator+=", helloStr.EqualTo("Mr. Hello,  Bonface Kabiru"), logFile, successfulTests);
-
-    // Calculate percentage of successful tests
-    double successPercentage = (static_cast<double>(successfulTests) / totalTests) * 100;
-
-    // successful percentage
-    logFile << "Successful " << std::fixed << std::setprecision(2) << successPercentage << "%" << std::endl;
-
-    logFile.close();
+    //replace
+    turkanaStr.Replace("a", "e");
+    std::cout << "The string after replacing 'a' with 'e' is: " << turkanaStr.CStr() << std::endl;
 
     return 0;
 }
