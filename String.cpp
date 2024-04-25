@@ -154,44 +154,37 @@
 	//replace
 	String& String::Replace(const String& _find, const String& _replace)
 	{
+		//get the lenght of find and replace
 		size_t findLength = _find.m_length;
 		size_t replaceLength = _replace.m_length;
+
+		//find the first occurance of the substring
 		size_t index = Find(_find);
+
 		while (index != SIZE_MAX)
 		{
-			if (findLength != replaceLength)
-			{
-				if (findLength > replaceLength)
-				{
-					size_t newLength = m_length - findLength + replaceLength;
-					size_t newCapacity = newLength + 1;
-					char* temp = new char[newCapacity];
-					strncpy_s(temp, newCapacity, m_str, index);
-					strcat_s(temp, newCapacity, _replace.CStr());
-					strcat_s(temp, newCapacity, m_str + index + findLength);
-					delete[] m_str;
-					m_str = temp;
-					m_length = newLength;
-					m_capacity = newCapacity;
-				}
-				else
-				{
-					size_t newLength = m_length - findLength + replaceLength;
-					size_t newCapacity = newLength + 1;
-					char* temp = new char[newCapacity];
-					strncpy_s(temp, newCapacity, m_str, index);
-					strcat_s(temp, newCapacity, _replace.CStr());
-					strcat_s(temp, newCapacity, m_str + index + findLength);
-					delete[] m_str;
-					m_str = temp;
-					m_length = newLength;
-					m_capacity = newCapacity;
-				}
-			}
-			else
-			{
-				strncpy_s(m_str + index, m_length - index, _replace.CStr(), replaceLength);
-			}
+			//calculate the new length
+			size_t newLength = m_length - findLength + replaceLength;
+
+			//allocate memory for the new string
+			char* temp = new char[newLength + 1];
+
+			//copy characters before the found substring
+			strncpy_s(temp, newLength + 1, m_str, index);
+
+			//copy replacement string
+			strcat_s(temp, newLength + 1, _replace.CStr());
+
+			//copy characters after the found substring
+			strcat_s(temp, newLength + 1, m_str + index + findLength);
+
+			//delete the old string and update the length
+			delete[] m_str;
+			m_str = temp;
+			m_length = newLength;
+			m_capacity = newLength + 1;
+
+			//find the next occurrence of the substring
 			index = Find(index + replaceLength, _find);
 		}
 		return *this;
@@ -232,14 +225,14 @@
 		{
 			if (this != &_str)
 			{
-				// update capacity if necessary
+				//update capacity if necessary
 				if (m_capacity < _str.m_length + 1) {
 					delete[] m_str;
 					m_capacity = _str.m_length + 1;
 					m_str = new char[m_capacity];
 				}
 
-				// copy the string and update length
+				//copy the string and update length
 				m_length = _str.m_length;
 				strcpy_s(m_str, m_capacity, _str.CStr());
 			}

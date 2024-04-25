@@ -424,3 +424,113 @@ Test 17 Operator< Successful
 Test 18 Operator+ Successful
 Test 19 Operator+= Successful
 Successful 100.00%
+
+Date: 25/04/2024 Time: 12:14:07
+Test 1 Concatenation Successful
+Test 2 Length Successful
+Test 3 CharacterAt Successful
+Test 4 EqualTo Successful
+Test 5 ToUpper Successful
+Test 6 ToLower Successful
+Test 7 Prepend Successful
+Test 8 Append Successful
+Test 9 Find Successful
+Test 10 FindFromIndex Successful
+Test 11 Replace Failed
+Test 12 Copy Successful
+Test 13 Operator== Successful
+Test 14 Operator= Successful
+Test 15 Operator[] Successful
+Test 16 Operator!= Successful
+Test 17 Operator< Successful
+Test 18 Operator+ Successful
+Test 19 Operator+= Successful
+Successful 94.74%
+
+Date: 25/04/2024 Time: 12:14:27
+Test 1 Concatenation Successful
+Test 2 Length Successful
+Test 3 CharacterAt Successful
+Test 4 EqualTo Successful
+Test 5 ToUpper Successful
+Test 6 ToLower Successful
+Test 7 Prepend Successful
+Test 8 Append Successful
+Test 9 Find Successful
+Test 10 FindFromIndex Successful
+Test 11 Replace Failed
+Test 12 Copy Successful
+Test 13 Operator== Successful
+Test 14 Operator= Successful
+Test 15 Operator[] Successful
+Test 16 Operator!= Successful
+Test 17 Operator< Successful
+Test 18 Operator+ Successful
+Test 19 Operator+= Successful
+Successful 94.74%
+
+Date: 25/04/2024 Time: 12:17:21
+Test 1 Concatenation Successful
+Test 2 Length Successful
+Test 3 CharacterAt Successful
+Test 4 EqualTo Successful
+Test 5 ToUpper Successful
+Test 6 ToLower Successful
+Test 7 Prepend Successful
+Test 8 Append Successful
+Test 9 Find Successful
+Test 10 FindFromIndex Successful
+Test 11 Replace Successful
+Test 12 Copy Successful
+Test 13 Operator== Successful
+Test 14 Operator= Successful
+Test 15 Operator[] Successful
+Test 16 Operator!= Successful
+Test 17 Operator< Successful
+Test 18 Operator+ Successful
+Test 19 Operator+= Successful
+Successful 100.00%
+
+Date: 25/04/2024 Time: 12:18:17
+Test 1 Concatenation Successful
+Test 2 Length Successful
+Test 3 CharacterAt Successful
+Test 4 EqualTo Successful
+Test 5 ToUpper Successful
+Test 6 ToLower Successful
+Test 7 Prepend Successful
+Test 8 Append Successful
+Test 9 Find Successful
+Test 10 FindFromIndex Successful
+Test 11 Replace Successful
+Test 12 Copy Successful
+Test 13 Operator== Successful
+Test 14 Operator= Successful
+Test 15 Operator[] Successful
+Test 16 Operator!= Successful
+Test 17 Operator< Successful
+Test 18 Operator+ Successful
+Test 19 Operator+= Successful
+Successful 100.00%
+
+Date: 25/04/2024 Time: 12:20:08
+Test 1 Concatenation Successful
+Test 2 Length Successful
+Test 3 CharacterAt Successful
+Test 4 EqualTo Successful
+Test 5 ToUpper Successful
+Test 6 ToLower Successful
+Test 7 Prepend Successful
+Test 8 Append Successful
+Test 9 Find Successful
+Test 10 FindFromIndex Successful
+Test 11 Replace Successful
+Test 12 Copy Successful
+Test 13 Operator== Successful
+Test 14 Operator= Successful
+Test 15 Operator[] Successful
+Test 16 Operator!= Successful
+Test 17 Operator< Successful
+Test 18 Operator+ Successful
+Test 19 Operator+= Successful
+Successful 100.00%

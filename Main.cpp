@@ -73,8 +73,8 @@ int main() {
 
     // Test replace
     totalTests++;
-    turkanaStr.Replace("Turkana", "Kenya");
-    logTestResult("Test " + std::to_string(totalTests) + " Replace", turkanaStr.EqualTo("Hello Kenya"), logFile, successfulTests);
+    turkanaStr.Replace("Hello", "Hi");
+    logTestResult("Test " + std::to_string(totalTests) + " Replace", turkanaStr.EqualTo("Hi Turkana"), logFile, successfulTests);
 
     // Test copy
     totalTests++;
