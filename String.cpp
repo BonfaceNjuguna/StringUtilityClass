@@ -15,6 +15,15 @@ String::String(const char* _str)
 	strcpy_s(m_str, m_capacity, _str);
 }
 
+// constructor from std::string
+String::String(const std::string& _str)
+{
+	m_length = _str.length();
+	m_capacity = m_length + 1;
+	m_str = new char[m_capacity];
+	strcpy_s(m_str, m_capacity, _str.c_str());
+}
+
 //copy constructor deep coopy
 String::String(const String& _other)
 {
@@ -236,23 +245,21 @@ bool String::operator!=(const String& _other)
 //operator overload assignment
 String& String::operator=(const String& _str)
 {
+
 	if (this != &_str)
 	{
-		if (this != &_str)
-		{
-			//update capacity
-			if (m_capacity < _str.m_length + 1) {
-				delete[] m_str;
-				m_capacity = _str.m_length + 1;
-				m_str = new char[m_capacity];
-			}
-
-			//copy the string and update length
-			m_length = _str.m_length;
-			strcpy_s(m_str, m_capacity, _str.CStr());
+		//update capacity
+		if (m_capacity < _str.m_length + 1) {
+			delete[] m_str;
+			m_capacity = _str.m_length + 1;
+			m_str = new char[m_capacity];
 		}
-		return *this;
+
+		//copy the string and update length
+		m_length = _str.m_length;
+		strcpy_s(m_str, m_capacity, _str.CStr());
 	}
+	return *this;
 }
 
 //operator overload subscript

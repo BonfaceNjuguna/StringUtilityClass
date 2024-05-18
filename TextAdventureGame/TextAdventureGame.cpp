@@ -1,7 +1,9 @@
 #include <iostream>
-#include "String.h"
+#include "Game.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Game game;
+    game.Play();
+    return 0;
 }

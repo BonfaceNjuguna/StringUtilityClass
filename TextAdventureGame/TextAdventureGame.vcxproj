@@ -127,11 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Items.cpp" />
-    <ClCompile Include="TextAdventureGame.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\StringUtilityClass.vcxproj">
       <Project>{f1f29223-9dac-4e17-9f39-55eee7c958ab}</Project>
     </ProjectReference>
