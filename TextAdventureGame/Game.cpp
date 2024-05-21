@@ -58,6 +58,10 @@ void Game::Play() {
                 String ("There is nothing to use.\n").WriteToConsole();
             }
         }
+        else if (lowerInput.Find("spell ") == 0) {
+            String spell = lowerInput.Replace("spell ", "");
+            player.CheckSpell(spell);
+        }
         else {
             String ("Invalid command.\n").WriteToConsole();
         }
