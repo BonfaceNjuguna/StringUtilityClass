@@ -19,20 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemType.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="String.h" />
-    <ClInclude Include="TextAdventureGame\Game.h" />
-    <ClInclude Include="TextAdventureGame\Item.h" />
-    <ClInclude Include="TextAdventureGame\ItemType.h" />
-    <ClInclude Include="TextAdventureGame\Room.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="ItemType.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="String.cpp" />
-    <ClCompile Include="TextAdventureGame\Game.cpp" />
-    <ClCompile Include="TextAdventureGame\ItemType.cpp" />
-    <ClCompile Include="TextAdventureGame\Room.cpp" />
-    <ClCompile Include="TextAdventureGame\TextAdventureGame.cpp" />
+    <ClCompile Include="TextAdventureGame.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -1,5 +1,5 @@
 #pragma once
-#include "../String.h"
+#include "String.h"
 #include "Item.h"
 
 class Room {

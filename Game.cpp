@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "../String.h"
+#include "String.h"
 #include <iostream>
 
 // initialize the rooms vector

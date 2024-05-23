@@ -2,7 +2,7 @@
 #include <vector>
 #include "Room.h"
 #include "ItemType.h"
-#include "../Player.h"
+#include "Player.h"
 
 class Game {
 private:

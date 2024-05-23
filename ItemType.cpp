@@ -1,5 +1,5 @@
 #include "ItemType.h"
-#include "../String.h"
+#include "String.h"
 #include <iostream>
 #include <string>
 
