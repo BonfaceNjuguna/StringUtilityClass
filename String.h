@@ -2,12 +2,14 @@
 #ifndef CUSTOM_STRING_HEADER
 #define CUSTOM_STRING_HEADER
 
+#include <string> 
+
 class String
 {
 public:
 	String();
 	String(const char* _str);
-
+	String(const std::string& _str);
 	String(const String& _other);
 
 	~String();
