@@ -6,7 +6,7 @@
 
 class Game {
 private:
-    Player player;
+    Player player; // The player
     Room* currentRoom; // The room the player is currently in
     std::vector<Room*> rooms; // All the rooms in the game
 

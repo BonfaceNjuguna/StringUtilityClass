@@ -4,7 +4,7 @@
 #include <string>
 
 BoxOfDonuts::BoxOfDonuts(int _donuts) : m_donuts(_donuts) {}
-
+// checks if there are any donuts left and if so, prints a message to the console and decrements the number of donuts.
 void BoxOfDonuts::Use() {
     if (m_donuts > 0) {
         String("You eat a donut. Delicious!\n").WriteToConsole();
@@ -25,7 +25,7 @@ void BoxOfDonuts::Describe() const {
 }
 
 BoxOfPizza::BoxOfPizza(int _slices) : m_slices(_slices) {}
-
+// checks if there are any pizzas left and if so, prints a message to the console and decrements the number of pizzas.
 void BoxOfPizza::Use() {
     if (m_slices > 0) {
         String("You eat a slice of pizza. Delicious!\n").WriteToConsole();
@@ -46,7 +46,7 @@ void BoxOfPizza::Describe() const {
 }
 
 BoxOfCandy::BoxOfCandy(int _candies) : m_candies(_candies) {}
-
+// checks if there are any candies left and if so, prints a message to the console and decrements the number of candies.
 void BoxOfCandy::Use() {
     if (m_candies > 0) {
         String("You eat a candy. Delicious!\n").WriteToConsole();
@@ -67,7 +67,7 @@ void BoxOfCandy::Describe() const {
 }
 
 BoxOfCookies::BoxOfCookies(int _cookies) : m_cookies(_cookies) {}
-
+// checks if there are any cookies left and if so, prints a message to the console and decrements the number of cookies.
 void BoxOfCookies::Use() {
     if (m_cookies > 0) {
         String("You eat a cookie. Delicious!\n").WriteToConsole();

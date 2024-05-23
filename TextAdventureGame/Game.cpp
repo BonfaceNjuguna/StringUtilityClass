@@ -2,7 +2,7 @@
 #include "../String.h"
 #include <iostream>
 
-// Constructor
+// initialize the rooms vector
 Game::Game() {
     rooms.push_back(new Room("You are in an empty room.\n"));
     rooms.push_back(new Room("You are in a small room.\n", new BoxOfDonuts(5)));
@@ -23,8 +23,9 @@ Game::~Game() {
 void Game::Play() {
     String input;
     while (true) {
+        // Describe the current room
         currentRoom->Describe();
-        String command = "You can move by using the following commands\nmove north\nmove south\nmove east\nmove west\nYou can also use an item or quit.\nWhat would you like to do?";
+        String command = "You can move by using the following commands\nmove north\nmove south\nmove east\nmove west\nYou can also use an item or quit.\nYou can also search for a spell - 'spell x' for example\nWhat would you like to do?\n";
         command.WriteToConsole();
         input.ReadFromConsole();
 
@@ -49,6 +50,7 @@ void Game::Play() {
         else if (lowerInput.EqualTo("start")) {
             currentRoom = rooms[0];
         }
+        // Check if the player wants to use an item
         else if (lowerInput.EqualTo("use")) {
             Item* item = currentRoom->GetItem();
             if (item != nullptr) {
@@ -58,6 +60,7 @@ void Game::Play() {
                 String ("There is nothing to use.\n").WriteToConsole();
             }
         }
+        // Check if the player knows a spell
         else if (lowerInput.Find("spell ") == 0) {
             String spell = lowerInput.Replace("spell ", "");
             player.CheckSpell(spell);
